@@ -30,7 +30,7 @@ RUN apt-get update \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get install -y nodejs \
-    && apt-get install -y yarn \
+    && npm install -g yarn \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -38,7 +38,7 @@ RUN apt-get update \
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php7.4
 
 COPY start-container /usr/local/bin/start-container
-COPY php.ini /etc/php/7.4/cli/conf.d/99-sail.ini
+COPY php.ini /etc/php/7.4/cli/conf.d/99-laravel.ini
 RUN chmod +x /usr/local/bin/start-container
 
 ENTRYPOINT ["start-container"]
