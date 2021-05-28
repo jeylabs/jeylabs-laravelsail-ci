@@ -39,8 +39,7 @@ RUN apt-get update \
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php7.4
 
-RUN echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc \
-    && source ~/.bashrc
+RUN echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
 
 COPY start-container /usr/local/bin/start-container
 COPY php.ini /etc/php/7.4/cli/conf.d/99-laravel.ini
