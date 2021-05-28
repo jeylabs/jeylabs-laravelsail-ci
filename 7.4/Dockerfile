@@ -32,6 +32,7 @@ RUN apt-get update \
     && apt-get install -y nodejs \
     && npm install -g yarn \
     && npm install -g serverless \
+    && composer global require laravel/vapor-cli --no-progress --no-suggest \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
